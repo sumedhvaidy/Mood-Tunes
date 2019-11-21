@@ -8,6 +8,7 @@ import com.google.android.material.snackbar.Snackbar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -26,6 +27,14 @@ public class MainActivity extends AppCompatActivity {
         moodPicker.setMinValue(0);
         pickerVals = new String[] {"Angry", "Sad", "Happy", "Chill"};
         moodPicker.setDisplayedValues(pickerVals);
+
+        moodPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
+            @Override
+            public void onValueChange(NumberPicker numberPicker, int i, int i1) {
+                int moodPickerVal = moodPicker.getValue();
+                Log.d("picker value", pickerVals[moodPickerVal]);
+            }
+        });
         setSupportActionBar(toolbar);
 
         FloatingActionButton fab = findViewById(R.id.fab);
