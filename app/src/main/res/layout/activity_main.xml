@@ -104,7 +104,7 @@
         android:background="#1ED760"
         android:clickable="true"
         android:focusable="true"
-        android:focusableInTouchMode="true"
+        android:focusableInTouchMode="false"
         app:backgroundTint="#1ED760"
         app:fabSize="normal"
         app:layout_constraintBottom_toBottomOf="parent"

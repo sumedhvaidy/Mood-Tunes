@@ -21,28 +21,14 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
     private NumberPicker moodPicker;
     private String[] pickerVals;
+    private String pickedMood;
+    private Intent mood;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        moodPicker = findViewById(R.id.moodPicker);
-        final TextView chosenMood = findViewById(R.id.chosenMood);
-        moodPicker.setTextSize(70);
-        moodPicker.setTextColor(Color.parseColor("#1ED760"));
-        moodPicker.setMaxValue(3);
-        moodPicker.setMinValue(0);
-        pickerVals = new String[] {"Angry", "Sad", "Happy", "Chill"};
-        moodPicker.setDisplayedValues(pickerVals);
-        moodPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
-            @Override
-            public void onValueChange(NumberPicker numberPicker, int i, int i1) {
-                int moodPickerVal = moodPicker.getValue();
-                Log.d("picker value", pickerVals[moodPickerVal]);
-                chosenMood.setText(pickerVals[moodPickerVal]);
-            }
-        });
-        setSupportActionBar(toolbar);
+        mood = new Intent(this, PlaylistScreen.class);
+        pickedMood = "Chill";
         FloatingActionButton nextButton = findViewById(R.id.nextButton);
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,10 +36,31 @@ public class MainActivity extends AppCompatActivity {
                 buttonClicked();
             }
         });
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        final TextView chosenMood = findViewById(R.id.chosenMood);
+        moodPicker = findViewById(R.id.moodPicker);
+        chosenMood.setText(pickedMood);
+        moodPicker.setTextSize(70);
+        moodPicker.setTextColor(Color.parseColor("#1ED760"));
+        moodPicker.setMaxValue(3);
+        moodPicker.setMinValue(0);
+        pickerVals = new String[] {"Chill", "Sad", "Happy", "Angry"};
+        moodPicker.setDisplayedValues(pickerVals);
+        moodPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
+            @Override
+            public void onValueChange(NumberPicker numberPicker, int i, int i1) {
+                int moodPickerVal = moodPicker.getValue();
+                pickedMood = pickerVals[moodPickerVal];
+                Log.d("picker value", pickedMood);
+                chosenMood.setText(pickedMood);
+            }
+        });
+        setSupportActionBar(toolbar);
     }
     public void buttonClicked() {
-        Intent intent = new Intent(this, PlaylistScreen.class);
-        startActivity(intent);
+        System.out.println("Before: " + pickedMood);
+        mood.putExtra("mood", pickedMood);
+        startActivity(mood);
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
