@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">MoodTunes</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_playlist_screen">PlaylistScreen</string>
+</resources>
