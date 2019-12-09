@@ -81,7 +81,6 @@ public class SplashActivity extends AppCompatActivity {
             Log.i("SADKJF","I'm in onActivityResult");
             String boi = response.getCode();
             System.out.println("I'm in" + boi);
-            Log.i("FUCK", response.toString());
 
 
             Log.i("SADKJF","I'm in " + response.getType());

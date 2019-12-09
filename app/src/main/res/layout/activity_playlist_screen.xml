@@ -49,24 +49,30 @@
             android:id="@+id/playlistOne"
             android:layout_width="match_parent"
             android:layout_height="104dp"
+            android:background="#1ED760"
             android:text="PLAYLIST ONE"
-            android:textSize="36sp"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp"
             android:textStyle="bold|italic" />
 
         <Button
             android:id="@+id/playlistTwo"
             android:layout_width="match_parent"
             android:layout_height="104dp"
+            android:background="#1ED760"
             android:text="PLAYLIST TWO"
-            android:textSize="36sp"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp"
             android:textStyle="bold|italic" />
 
         <Button
             android:id="@+id/playlistThree"
             android:layout_width="match_parent"
             android:layout_height="104dp"
+            android:background="#1ED760"
             android:text="PLAYLIST THREE"
-            android:textSize="36sp"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp"
             android:textStyle="bold|italic" />
     </LinearLayout>
 
