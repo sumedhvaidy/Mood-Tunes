@@ -39,5 +39,36 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="357dp"
+        android:orientation="vertical"
+        android:translationY="150dp">
+
+        <Button
+            android:id="@+id/playlistOne"
+            android:layout_width="match_parent"
+            android:layout_height="104dp"
+            android:text="PLAYLIST ONE"
+            android:textSize="36sp"
+            android:textStyle="bold|italic" />
+
+        <Button
+            android:id="@+id/playlistTwo"
+            android:layout_width="match_parent"
+            android:layout_height="104dp"
+            android:text="PLAYLIST TWO"
+            android:textSize="36sp"
+            android:textStyle="bold|italic" />
+
+        <Button
+            android:id="@+id/playlistThree"
+            android:layout_width="match_parent"
+            android:layout_height="104dp"
+            android:text="PLAYLIST THREE"
+            android:textSize="36sp"
+            android:textStyle="bold|italic" />
+    </LinearLayout>
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

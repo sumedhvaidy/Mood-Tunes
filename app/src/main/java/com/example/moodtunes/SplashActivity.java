@@ -48,6 +48,7 @@ public class SplashActivity extends AppCompatActivity {
             User user = userService.getUser();
             editor = getSharedPreferences("SPOTIFY", 0).edit();
             editor.putString("userid", user.id);
+            Log.i("USERID", user.id);
             Log.d("STARTING", "GOT USER INFORMATION");
             editor.commit();
             startMainActivity();
@@ -74,11 +75,18 @@ public class SplashActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, intent);
 
         // Check if result comes from the correct activity
+        Log.i("SADKJF",Integer.toString(resultCode));
         if (requestCode == REQUEST_CODE) {
             AuthenticationResponse response = AuthenticationClient.getResponse(resultCode, intent);
             Log.i("SADKJF","I'm in onActivityResult");
+            String boi = response.getCode();
+            System.out.println("I'm in" + boi);
+            Log.i("FUCK", response.toString());
+
+
             Log.i("SADKJF","I'm in " + response.getType());
             Log.i("SADKJF","I'm in ResultCode:" + resultCode);
+            //System.out.println("I'm in" + response);
             switch (response.getType()) {
                 // Response was successful and contains auth token
                 case TOKEN:

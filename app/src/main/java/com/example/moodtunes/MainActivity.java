@@ -18,17 +18,53 @@ import android.widget.Button;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class MainActivity extends AppCompatActivity {
     private NumberPicker moodPicker;
     private String[] pickerVals;
     private String pickedMood;
     private Intent mood;
+
+
+    private Map<String, List<String>> playlists = new HashMap<>();
+
+    private List<String> happyPlaylists;
+    private List<String> sadPlaylists;
+    private List<String> angryPlaylists;
+
+
+    private Map<String, List<String>> allPlaylists = new HashMap<>();
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mood = new Intent(this, PlaylistScreen.class);
         pickedMood = "Chill";
+
+
+        happyPlaylists = new ArrayList<>();
+        happyPlaylists.add("https://open.spotify.com/playlist/19Y5Q4ulqoI1UxuJe2TnIM?si=z8XQHwjARTSstBWeTKMamw");
+        happyPlaylists.add("https://open.spotify.com/playlist/37i9dQZF1DXdPec7aLTmlC?si=GR62G01oRmSIgDcye9ADpg");
+
+        sadPlaylists = new ArrayList<>();
+        sadPlaylists.add("https://open.spotify.com/playlist/5ylYSUfuhyL80OUi0WjPRz?si=unWnBUOoRoyDGN323QkzOg");
+        sadPlaylists.add("https://open.spotify.com/playlist/37i9dQZF1DX3YSRoSdA634?si=WjHbc-NbSx-qQiwJtMZfnQ");
+
+//        angryPlaylists.add("")
+        playlists.put("Happy", happyPlaylists);
+        playlists.put("Sad", sadPlaylists);
+
+
+
+
+
+
         FloatingActionButton nextButton = findViewById(R.id.nextButton);
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,10 +93,24 @@ public class MainActivity extends AppCompatActivity {
         });
         setSupportActionBar(toolbar);
     }
+
+
+    public String[] convertStringListToArray(List<String> originalList)
+    {
+        String convertedArray[] = new String[originalList.size()];
+        for (int j = 0; j < originalList.size(); j++) {
+            convertedArray[j] = originalList.get(j);
+        }
+        return convertedArray;
+    }
+
+
     public void buttonClicked() {
         System.out.println("Before: " + pickedMood);
         mood.putExtra("mood", pickedMood);
+        mood.putExtra(pickedMood, convertStringListToArray(playlists.get(pickedMood)));
         startActivity(mood);
+        finish();
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
